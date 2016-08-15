@@ -14,11 +14,4 @@
         android:layout_gravity="center"
         android:text="@string/app_version" />
 
-    <Button
-        android:id="@+id/button_splash_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_splash_version"
-        android:layout_centerHorizontal="true"
-        android:text="@string/splash_button_login" />
 </RelativeLayout>
