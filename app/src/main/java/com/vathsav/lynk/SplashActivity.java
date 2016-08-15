@@ -36,7 +36,7 @@ public class SplashActivity extends AppCompatActivity {
                 loginTask = Async.executeAsync(Utils.sparkCloud, new Async.ApiWork<ParticleCloud, Void>() {
                     @Override
                     public Void callApi(ParticleCloud particleCloud) throws ParticleCloudException, IOException {
-                        particleCloud.logIn("email@domain.in", "password");
+                        particleCloud.logIn("email@domain.com", "password");
 
                         if (particleCloud.getDevices().contains(particleCloud.getDevice("ruthless_dynamite"))) {
                             Utils.ruthlessDynamite = particleCloud.getDevice("ruthless_dynamite");

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lynk</string>
+    <string name="app_version">Alpha Version 0.1.0</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
+
+    // Strings for Splash Screen
+    <string name="splash_button_login">Login</string>
+</resources>
