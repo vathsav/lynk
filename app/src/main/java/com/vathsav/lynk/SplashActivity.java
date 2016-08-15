@@ -3,7 +3,9 @@ package com.vathsav.lynk;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vathsav.lynk.utils.Utils;
@@ -27,17 +29,41 @@ public class SplashActivity extends AppCompatActivity {
         ParticleCloudSDK.init(getApplicationContext());
         Utils.sparkCloud = ParticleCloudSDK.getCloud();
 
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar_splash);
+        final TextView textView = (TextView) findViewById(R.id.text_view_splash_initializing);
+
         loginTask = Async.executeAsync(Utils.sparkCloud, new Async.ApiWork<ParticleCloud, Void>() {
             @Override
             public Void callApi(ParticleCloud particleCloud) throws ParticleCloudException, IOException {
-                particleCloud.logIn("email@domain.com", "password");
+                try {
+                    particleCloud.logIn("email@domain.com", "password");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setVisibility(View.VISIBLE);
+                            textView.setVisibility(View.VISIBLE);
+                        }
+                    });
 
-                if (particleCloud.getDevices().contains(particleCloud.getDevice("ruthless_dynamite"))) {
-                    Utils.ruthlessDynamite = particleCloud.getDevice("ruthless_dynamite");
-                    Utils.deviceId = Utils.ruthlessDynamite.getID();
-                    Log.v("Device id:", Utils.deviceId);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Unable to find Core.", Toast.LENGTH_SHORT).show();
+                    if (particleCloud.getDevices().contains(particleCloud.getDevice("ruthless_dynamite"))) {
+                        Utils.ruthlessDynamite = particleCloud.getDevice("ruthless_dynamite");
+                        Utils.deviceId = Utils.ruthlessDynamite.getID();
+                    } else {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "Unable to find Core.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                } catch (ParticleCloudException ex) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "User credentials are invalid", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    finish();
                 }
 
                 return null;
