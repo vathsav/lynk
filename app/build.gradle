@@ -17,11 +17,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-
-        debug {
-            particleCloudEmailId PARTICLE_CLOUD_EMAIL
-            particleCloudPassword PARTICLE_CLOUD_PASSWORD
-        }
     }
 }
 

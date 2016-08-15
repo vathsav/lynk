@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (Utils.ruthlessDynamite != null) {
                     textViewDeviceId.setText(Utils.deviceId);
-
-
                 }
             }
         });
@@ -37,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         buttonOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.pushValue(Utils.ruthlessDynamite, "digitalwrite", "D7", "1", MainActivity.this);
+                Utils.pushDigitalValue(Utils.ruthlessDynamite, "digitalwrite", "D7", "1", MainActivity.this);
             }
         });
 
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         buttonOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.pushValue(Utils.ruthlessDynamite, "digitalwrite", "D7", "0", MainActivity.this);
+                Utils.pushDigitalValue(Utils.ruthlessDynamite, "digitalwrite", "D7", "0", MainActivity.this);
             }
         });
     }

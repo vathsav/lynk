@@ -19,7 +19,7 @@ public class Utils {
     public static ParticleDevice ruthlessDynamite = null;
     public static String deviceId = null;
 
-    public static void pushValue(ParticleDevice particleDevice, final String functionName,
+    public static void pushDigitalValue(ParticleDevice particleDevice, final String functionName,
                                  final String pinNumber, final String pinStatus, final Activity context) {
         Async.executeAsync(particleDevice, new Async.ApiWork<ParticleDevice, Integer>() {
             @Override
