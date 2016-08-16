@@ -29,4 +29,9 @@ dependencies {
 
     // Particle Cloud SDK
     compile 'io.particle:cloudsdk:0.3.4'
+
+    // Firebase
+    compile 'com.google.firebase:firebase-database:9.4.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

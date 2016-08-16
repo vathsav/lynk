@@ -1,4 +1,4 @@
-package com.vathsav.lynk;
+package com.vathsav.lynk.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.vathsav.lynk.R;
+import com.vathsav.lynk.utils.Credentials;
 import com.vathsav.lynk.utils.Utils;
 
 import java.io.IOException;
@@ -36,7 +38,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public Void callApi(ParticleCloud particleCloud) throws ParticleCloudException, IOException {
                 try {
-                    particleCloud.logIn("email@domain.com", "password");
+                    particleCloud.logIn(Credentials.particleEmail, Credentials.particlePassword);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

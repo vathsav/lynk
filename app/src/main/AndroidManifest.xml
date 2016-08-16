@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/LynkTheme">
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_splash"
             android:theme="@style/LynkTheme.NoActionBar">
@@ -21,7 +21,7 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/LynkTheme.NoActionBar">
             <intent-filter>
