@@ -39,6 +39,7 @@ public class SplashActivity extends AppCompatActivity {
             public Void callApi(ParticleCloud particleCloud) throws ParticleCloudException, IOException {
                 try {
                     particleCloud.logIn(Credentials.particleEmail, Credentials.particlePassword);
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -59,6 +60,7 @@ public class SplashActivity extends AppCompatActivity {
                         });
                     }
                 } catch (ParticleCloudException ex) {
+                    ex.printStackTrace();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
