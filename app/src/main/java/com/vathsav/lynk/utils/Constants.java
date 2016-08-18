@@ -7,13 +7,25 @@ import com.google.firebase.database.FirebaseDatabase;
  * Class for app wide constants.
  */
 public class Constants {
+
+    // Intents
+    public static String intentHome = "com.vathsav.lynk.MAIN";
+
+    // Firebase references
     private static FirebaseDatabase database = FirebaseDatabase.getInstance();
     public static DatabaseReference globalsReference = database.getReference("globals");
     public static DatabaseReference peripheralsReference = database.getReference("peripherals");
 
+    // Names of Cores
+    public static String particleRuthlessDynamite = "ruthless_dynamite";
+
+    // Firebase nodes
     public static String lynkGlobalsServerTimestamp = "server_timestamp";
 
+    // Toasts
     public static String toastCoreOffline = "Core is offline.";
+    public static String toastUnableToFindCore = "Unable to find Core.";
+    public static String toastInvalidLoginCredentials = "Invalid login credentials.";
 
     // Peripheral names
     public static String peripheralLight = "light";
@@ -26,7 +38,7 @@ public class Constants {
     public static String digitalRead = "digitalRead";
     public static String analogWrite = "analogWrite";
     public static String analogRead = "analogRead";
-    public static String blowEmAll = "blowIt";
+    public static String fireEmp = "supermassiveEmp";
 
     // Dedicated GPIO configuration
     public static String userOneLight = "D0";

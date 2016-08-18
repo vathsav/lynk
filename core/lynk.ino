@@ -121,3 +121,52 @@ int lynkAnalogWrite(String command) {
 	}
 	else return -2;
 }
+
+/*******************************************************************************
+ * Function Name  : supermassiveEmp
+ * Description    : Sends a low to all pins on the board
+ * Input          : 007
+ * Output         : None.
+ * Return         : 1 on success and -1 on failure
+ *******************************************************************************/
+ int lynkBlow(String command) {
+	if (command.startsWith("007")) {
+		// Send a LOW to all digital pins
+		pinMode(0, OUTPUT);
+		digitalWrite(0, LOW);
+		pinMode(1, OUTPUT);
+		digitalWrite(1, LOW);
+		pinMode(2, OUTPUT);
+		digitalWrite(2, LOW);
+		pinMode(3, OUTPUT);
+		digitalWrite(3, LOW);
+		pinMode(4, OUTPUT);
+		digitalWrite(4, LOW);
+		pinMode(5, OUTPUT);
+		digitalWrite(5, LOW);
+		pinMode(6, OUTPUT);
+		digitalWrite(6, LOW);
+		pinMode(7, OUTPUT);
+		digitalWrite(7, LOW);
+
+		// Send a LOW to all analog pins
+		pinMode(10, OUTPUT);
+		analogWrite(10, 0);
+		pinMode(11, OUTPUT);
+		analogWrite(11, 0);
+		pinMode(12, OUTPUT);
+		analogWrite(12, 0);
+		pinMode(13, OUTPUT);
+		analogWrite(13, 0);
+		pinMode(14, OUTPUT);
+		analogWrite(14, 0);
+		pinMode(15, OUTPUT);
+		analogWrite(15, 0);
+		pinMode(16, OUTPUT);
+		analogWrite(16, 0);
+		pinMode(17, OUTPUT);
+		analogWrite(17, 0);
+	} else {
+		return -1;
+	}
+ }

@@ -168,9 +168,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Utils.ruthlessDynamite != null) {
-                    // Turn everything off.
-                }
+                Utils.supermassiveEmp(Utils.ruthlessDynamite, MainActivity.this);
             }
         });
     }

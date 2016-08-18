@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vathsav.lynk.R;
+import com.vathsav.lynk.utils.Constants;
 import com.vathsav.lynk.utils.Credentials;
 import com.vathsav.lynk.utils.Utils;
 
@@ -18,6 +19,7 @@ import io.particle.android.sdk.cloud.ParticleCloud;
 import io.particle.android.sdk.cloud.ParticleCloudException;
 import io.particle.android.sdk.cloud.ParticleCloudSDK;
 import io.particle.android.sdk.utils.Async;
+import io.particle.android.sdk.utils.Toaster;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -48,25 +50,15 @@ public class SplashActivity extends AppCompatActivity {
                         }
                     });
 
-                    if (particleCloud.getDevices().contains(particleCloud.getDevice("ruthless_dynamite"))) {
-                        Utils.ruthlessDynamite = particleCloud.getDevice("ruthless_dynamite");
+                    if (particleCloud.getDevices().contains(particleCloud.getDevice(Constants.particleRuthlessDynamite))) {
+                        Utils.ruthlessDynamite = particleCloud.getDevice(Constants.particleRuthlessDynamite);
                         Utils.deviceId = Utils.ruthlessDynamite.getID();
                     } else {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getApplicationContext(), "Unable to find Core.", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        Toaster.s(SplashActivity.this, Constants.toastUnableToFindCore);
                     }
                 } catch (ParticleCloudException ex) {
                     ex.printStackTrace();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getApplicationContext(), "User credentials are invalid", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    Toaster.s(SplashActivity.this, Constants.toastInvalidLoginCredentials);
                     finish();
                 }
 
@@ -85,7 +77,7 @@ public class SplashActivity extends AppCompatActivity {
                     return;
                 }
 
-                Intent openMainActivity = new Intent("com.vathsav.lynk.MAIN");
+                Intent openMainActivity = new Intent(Constants.intentHome);
                 startActivity(openMainActivity);
             }
 
