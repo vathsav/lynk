@@ -41,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneLight, "0", Constants.userOne,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneLight, "1", Constants.userOne,
                             Constants.peripheralLight, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneLight, "1", Constants.userOne,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneLight, "0", Constants.userOne,
                             Constants.peripheralLight, MainActivity.this);
             }
         });
@@ -53,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneFan, "0", Constants.userOne,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneFan, "1", Constants.userOne,
                             Constants.peripheralFan, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneFan, "1", Constants.userOne,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneFan, "0", Constants.userOne,
                             Constants.peripheralFan, MainActivity.this);
             }
         });
@@ -68,10 +68,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoLight, "0", Constants.userTwo,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoLight, "1", Constants.userTwo,
                             Constants.peripheralLight, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoLight, "1", Constants.userTwo,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoLight, "0", Constants.userTwo,
                             Constants.peripheralLight, MainActivity.this);
             }
         });
@@ -80,10 +80,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoFan, "0", Constants.userTwo,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoFan, "1", Constants.userTwo,
                             Constants.peripheralFan, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoFan, "1", Constants.userTwo,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoFan, "0", Constants.userTwo,
                             Constants.peripheralFan, MainActivity.this);
             }
         });
@@ -95,10 +95,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeLight, "0", Constants.userThree,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeLight, "1", Constants.userThree,
                             Constants.peripheralLight, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeLight, "1", Constants.userThree,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeLight, "0", Constants.userThree,
                             Constants.peripheralLight, MainActivity.this);
             }
         });
@@ -107,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeFan, "0", Constants.userThree,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeFan, "1", Constants.userThree,
                             Constants.peripheralFan, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeFan, "1", Constants.userThree,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeFan, "0", Constants.userThree,
                             Constants.peripheralFan, MainActivity.this);
             }
         });
@@ -122,10 +122,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourLight, "0", Constants.userFour,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourLight, "1", Constants.userFour,
                             Constants.peripheralLight, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourLight, "1", Constants.userFour,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourLight, "0", Constants.userFour,
                             Constants.peripheralLight, MainActivity.this);
             }
         });
@@ -134,10 +134,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourFan, "0", Constants.userFour,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourFan, "1", Constants.userFour,
                             Constants.peripheralFan, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourFan, "1", Constants.userFour,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourFan, "0", Constants.userFour,
                             Constants.peripheralFan, MainActivity.this);
             }
         });

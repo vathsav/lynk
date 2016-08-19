@@ -3,6 +3,7 @@ int lynkDigitalRead(String pin);
 int lynkDigitalWrite(String command);
 int lynkAnalogRead(String pin);
 int lynkAnalogWrite(String command);
+int lynkBlow(String code);
 
 void setup() {
 	//Register all the Lynk functions
@@ -130,7 +131,7 @@ int lynkAnalogWrite(String command) {
  * Return         : 1 on success and -1 on failure
  *******************************************************************************/
  int lynkBlow(String command) {
-	if (command.startsWith("007")) {
+	if (command.startsWith("pandasareawesome")) {
 		// Send a LOW to all digital pins
 		pinMode(0, OUTPUT);
 		digitalWrite(0, LOW);
@@ -155,7 +156,7 @@ int lynkAnalogWrite(String command) {
 		pinMode(11, OUTPUT);
 		analogWrite(11, 0);
 		pinMode(12, OUTPUT);
-		analogWrite(12, 0);
+		digitalWrite(12, LOW);
 		pinMode(13, OUTPUT);
 		analogWrite(13, 0);
 		pinMode(14, OUTPUT);

@@ -43,14 +43,17 @@ public class Constants {
     // Dedicated GPIO configuration
     public static String userOneLight = "D0";
     public static String userOneFan = "A0";
-    public static String userTwoLight = "D1";
-    public static String userTwoFan = "A1";
-    public static String userThreeLight = "D2";
-    public static String userThreeFan = "A2";
-    public static String userFourLight = "D3";
-    public static String userFourFan = "A3";
-//    public static String commonOne = "A4";
-//    public static String commonTwo = "A5";
+    public static String userTwoLight = "D2";
+    public static String userTwoFan = "A2";
+    public static String userThreeLight = "D4";
+    public static String userThreeFan = "A4";
+    public static String userFourLight = "D6";
+    public static String userFourFan = "A6";
+//    public static String commonOne = "A";
+//    public static String commonTwo = "A";
+
+    // EMP code :P
+    public static String skadooshCode = "pandasareawesome";
 
     // Names of users
     public static String userOne = "Sentinel";
