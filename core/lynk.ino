@@ -6,11 +6,11 @@ int lynkAnalogWrite(String command);
 
 void setup() {
 	//Register all the Lynk functions
-	Spark.function("digitalRead", lynkDigitalRead);
-	Spark.function("digitalWrite", lynkDigitalWrite);
-	Spark.function("analogRead", lynkAnalogRead);
-	Spark.function("analogWrite", lynkAnalogWrite);
-	Spark.function("supermassiveEmp", lynkBlow);
+	Particle.function("digitalRead", lynkDigitalRead);
+	Particle.function("digitalWrite", lynkDigitalWrite);
+	Particle.function("analogRead", lynkAnalogRead);
+	Particle.function("analogWrite", lynkAnalogWrite);
+	Particle.function("skadoosh", lynkBlow);
 }
 
 void loop() {}

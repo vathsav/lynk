@@ -38,7 +38,7 @@ public class Constants {
     public static String digitalRead = "digitalRead";
     public static String analogWrite = "analogWrite";
     public static String analogRead = "analogRead";
-    public static String fireEmp = "supermassiveEmp";
+    public static String fireEmp = "skadoosh";
 
     // Dedicated GPIO configuration
     public static String userOneLight = "D0";
