@@ -4,14 +4,14 @@ A home automation client for my dorm using a Spark Core, Particle Cloud SDK, And
 **Status:** Under development
 
 **To do**
-* ~Basic interaction between the Spark Core and Android client~
+* ~~Basic interaction between the Spark Core and Android client~~
 * Events that get triggered based on device location
 * XMPP server scripts for pushing alerts to devices
 * Ability to control common applicances
 * Background service for location awareness
 * UI/UX
 * Widget for quicker access
-* ~Script to dump on the Spark Core~
+* ~~Script to dump on the Spark Core~~
 * Spark Core's circuit
 
 ## Setup
