@@ -36,15 +36,10 @@ public class Utils {
                     try {
                         return Utils.ruthlessDynamite.callFunction(Constants.digitalWrite, Py.list(pinNumber, pinStatus));
                     } catch (ParticleDevice.FunctionDoesNotExistException e) {
-                        e.printStackTrace();
+                        Toaster.s(activity, Constants.toastIncorrectFunction);
                     }
                 } else {
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(activity.getApplicationContext(), Constants.toastCoreOffline, Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    Toaster.s(activity, Constants.toastCoreOffline);
                 }
                 return null;
             }
@@ -52,39 +47,39 @@ public class Utils {
             @Override
             public void onSuccess(Integer value) {
                 // Update values on Firebase!
-                if (value != null)
-                    if (value > 0) {
-                        if (pinStatus.equals("0")) {
-                            Constants.peripheralsReference
-                                    .child(user)
-                                    .child(peripheral)
-                                    .setValue(false)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (!task.isSuccessful()) {
-                                                // TODO: 16/08/16 Try again.
-                                            }
+                // Add a progressbar
+                if (value > 0) {
+                    if (pinStatus.equals("0")) {
+                        Constants.peripheralsReference
+                                .child(user)
+                                .child(peripheral)
+                                .setValue(false)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (!task.isSuccessful()) {
+                                            // TODO: 16/08/16 Try again.
                                         }
-                                    });
-                        } else {
-                            Constants.peripheralsReference
-                                    .child(user)
-                                    .child(peripheral)
-                                    .setValue(true)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (!task.isSuccessful()) {
-                                                // TODO: 16/08/16 Try again.
-                                            }
-                                        }
-                                    });
-                        }
+                                    }
+                                });
                     } else {
-                        // TODO: 16/08/16 Throw error
+                        Constants.peripheralsReference
+                                .child(user)
+                                .child(peripheral)
+                                .setValue(true)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (!task.isSuccessful()) {
+                                            // TODO: 16/08/16 Try again.
+                                        }
+                                    }
+                                });
                     }
-                Toaster.s(activity, "Return value: " + value);
+                } else {
+                    // TODO: 16/08/16 Throw error
+                    Toaster.s(activity, "Return value: " + value);
+                }
             }
 
             @Override
@@ -95,13 +90,44 @@ public class Utils {
     }
 
     // Turn off all peripherals
-    public static void supermassiveEmp(ParticleDevice particleDevice, Activity activity) {
+    public static void supermassiveEmp(ParticleDevice particleDevice, final Activity activity) {
         if (particleDevice.isConnected()) {
             /** TODO: 16/08/16 Write a custom function on the Core to set a 0 to all digital and analog pins.
              * It's inefficient to push lows for each pin.
              */
-//            Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.blowEmAll, "0", Constants.userOne, activity);
 
+            Async.executeAsync(particleDevice, new Async.ApiWork<ParticleDevice, Integer>() {
+                @Override
+                public Integer callApi(ParticleDevice particleDevice) throws ParticleCloudException, IOException {
+                    if (particleDevice.isConnected()) {
+                        try {
+                            return Utils.ruthlessDynamite.callFunction(Constants.fireEmp, Py.list(Constants.skadooshCode));
+                        } catch (ParticleDevice.FunctionDoesNotExistException e) {
+                            Toaster.s(activity, Constants.toastIncorrectFunction);
+                            e.printStackTrace();
+                        }
+                    } else {
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(activity.getApplicationContext(), Constants.toastCoreOffline, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                    return null;
+                }
+
+                @Override
+                public void onSuccess(Integer value) {
+                    // TODO: 19/08/16 Update values on Firebase.
+                    // Toaster.s(activity, "Return value: " + value);
+                }
+
+                @Override
+                public void onFailure(ParticleCloudException exception) {
+
+                }
+            });
         }
     }
 

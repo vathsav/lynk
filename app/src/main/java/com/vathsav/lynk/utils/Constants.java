@@ -24,6 +24,7 @@ public class Constants {
 
     // Toasts
     public static String toastCoreOffline = "Core is offline.";
+    public static String toastIncorrectFunction = "Function doesn't exist on the Core!";
     public static String toastUnableToFindCore = "Unable to find Core.";
     public static String toastInvalidLoginCredentials = "Invalid login credentials.";
 
