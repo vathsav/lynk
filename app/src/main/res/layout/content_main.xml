@@ -21,8 +21,9 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorUserOne">
 
             <ToggleButton
                 android:id="@+id/toggle_button_user_one_light"
@@ -41,12 +42,25 @@
                 android:layout_centerVertical="true"
                 android:textOff="Fan Off"
                 android:textOn="Fan On" />
+
+            <TextView
+                android:id="@+id/text_view_user_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorLabelUserOne"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/white_dirty" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@color/colorUserTwo">
 
             <ToggleButton
                 android:id="@+id/toggle_button_user_two_light"
@@ -65,6 +79,17 @@
                 android:layout_centerVertical="true"
                 android:textOff="Fan Off"
                 android:textOn="Fan On" />
+
+            <TextView
+                android:id="@+id/text_view_user_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorLabelUserTwo"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/white_dirty" />
         </RelativeLayout>
 
     </LinearLayout>
@@ -79,7 +104,9 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@color/colorUserThree">
 
             <ToggleButton
                 android:id="@+id/toggle_button_user_three_light"
@@ -98,13 +125,26 @@
                 android:layout_centerVertical="true"
                 android:textOff="Fan Off"
                 android:textOn="Fan On" />
+
+
+            <TextView
+                android:id="@+id/text_view_user_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorLabelUserThree"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/white_dirty" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorUserFour">
 
             <ToggleButton
                 android:id="@+id/toggle_button_user_four_light"
@@ -123,6 +163,17 @@
                 android:layout_centerVertical="true"
                 android:textOff="Fan Off"
                 android:textOn="Fan On" />
+
+            <TextView
+                android:id="@+id/text_view_user_four"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorLabelUserFour"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/white_dirty" />
         </RelativeLayout>
 
     </LinearLayout>

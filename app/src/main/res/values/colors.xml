@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#795548</color>
+    <color name="colorPrimaryDark">#3E2723</color>
+    <color name="colorAccent">#006064</color>
+
+    // UI colors
+    <color name="colorUserOne">#c62828</color>
+    <color name="colorUserTwo">#0D47A1</color>
+    <color name="colorUserThree">#1B5E20</color>
+    <color name="colorUserFour">#F57F17</color>
+
+    <color name="colorLabelUserOne">#f44336</color>
+    <color name="colorLabelUserTwo">#1976D2</color>
+    <color name="colorLabelUserThree">#388E3C</color>
+    <color name="colorLabelUserFour">#FFA000</color>
+
 
     <color name="black_overlay">#66000000</color>
 

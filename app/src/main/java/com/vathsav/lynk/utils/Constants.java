@@ -23,6 +23,7 @@ public class Constants {
     public static String lynkGlobalsServerTimestamp = "server_timestamp";
 
     // Toasts
+    public static String toastCommandCancelled = "Command cancelled";
     public static String toastCoreOffline = "Core is offline.";
     public static String toastIncorrectFunction = "Function doesn't exist on the Core!";
     public static String toastUnableToFindCore = "Unable to find Core.";

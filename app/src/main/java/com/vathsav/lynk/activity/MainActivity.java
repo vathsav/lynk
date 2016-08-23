@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.google.firebase.database.DataSnapshot;
@@ -25,14 +27,48 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ToggleButton toggleButtonUserOneLight = (ToggleButton) findViewById(R.id.toggle_button_user_one_light);
-        ToggleButton toggleButtonUserOneFan = (ToggleButton) findViewById(R.id.toggle_button_user_one_fan);
-        ToggleButton toggleButtonUserTwoLight = (ToggleButton) findViewById(R.id.toggle_button_user_two_light);
-        ToggleButton toggleButtonUserTwoFan = (ToggleButton) findViewById(R.id.toggle_button_user_two_fan);
-        ToggleButton toggleButtonUserThreeLight = (ToggleButton) findViewById(R.id.toggle_button_user_three_light);
-        ToggleButton toggleButtonUserThreeFan = (ToggleButton) findViewById(R.id.toggle_button_user_three_fan);
-        ToggleButton toggleButtonUserFourLight = (ToggleButton) findViewById(R.id.toggle_button_user_four_light);
-        ToggleButton toggleButtonUserFourFan = (ToggleButton) findViewById(R.id.toggle_button_user_four_fan);
+        final ToggleButton toggleButtonUserOneLight = (ToggleButton) findViewById(R.id.toggle_button_user_one_light);
+        final ToggleButton toggleButtonUserOneFan = (ToggleButton) findViewById(R.id.toggle_button_user_one_fan);
+        final ToggleButton toggleButtonUserTwoLight = (ToggleButton) findViewById(R.id.toggle_button_user_two_light);
+        final ToggleButton toggleButtonUserTwoFan = (ToggleButton) findViewById(R.id.toggle_button_user_two_fan);
+        final ToggleButton toggleButtonUserThreeLight = (ToggleButton) findViewById(R.id.toggle_button_user_three_light);
+        final ToggleButton toggleButtonUserThreeFan = (ToggleButton) findViewById(R.id.toggle_button_user_three_fan);
+        final ToggleButton toggleButtonUserFourLight = (ToggleButton) findViewById(R.id.toggle_button_user_four_light);
+        final ToggleButton toggleButtonUserFourFan = (ToggleButton) findViewById(R.id.toggle_button_user_four_fan);
+
+        TextView textViewUserOne = (TextView) findViewById(R.id.text_view_user_one);
+        TextView textViewUserTwo = (TextView) findViewById(R.id.text_view_user_two);
+        TextView textViewUserThree = (TextView) findViewById(R.id.text_view_user_three);
+        TextView textViewUserFour = (TextView) findViewById(R.id.text_view_user_four);
+
+        textViewUserOne.setText(Constants.userOne);
+        textViewUserTwo.setText(Constants.userTwo);
+        textViewUserThree.setText(Constants.userThree);
+        textViewUserFour.setText(Constants.userFour);
+
+        /**
+         * Peripheral references' valueEventListener
+         */
+        Constants.peripheralsReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot peripheralSnapshot : dataSnapshot.getChildren()) {
+                    toggleButtonUserOneLight.setChecked(peripheralSnapshot.child(Constants.userOne).child(Constants.peripheralLight).getValue().equals(true));
+                    toggleButtonUserOneFan.setChecked(peripheralSnapshot.child(Constants.userOne).child(Constants.peripheralFan).getValue().equals(true));
+                    toggleButtonUserTwoLight.setChecked(peripheralSnapshot.child(Constants.userTwo).child(Constants.peripheralLight).getValue().equals(true));
+                    toggleButtonUserTwoFan.setChecked(peripheralSnapshot.child(Constants.userTwo).child(Constants.peripheralFan).getValue().equals(true));
+                    toggleButtonUserThreeLight.setChecked(peripheralSnapshot.child(Constants.userThree).child(Constants.peripheralLight).getValue().equals(true));
+                    toggleButtonUserThreeFan.setChecked(peripheralSnapshot.child(Constants.userThree).child(Constants.peripheralFan).getValue().equals(true));
+                    toggleButtonUserFourLight.setChecked(peripheralSnapshot.child(Constants.userFour).child(Constants.peripheralLight).getValue().equals(true));
+                    toggleButtonUserFourFan.setChecked(peripheralSnapshot.child(Constants.userFour).child(Constants.peripheralFan).getValue().equals(true));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), Constants.toastCommandCancelled, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         /**
          * User One
