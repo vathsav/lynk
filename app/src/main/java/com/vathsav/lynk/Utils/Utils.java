@@ -21,6 +21,7 @@ import io.particle.android.sdk.utils.Toaster;
 
 /**
  * Created by vathsav on 15/08/16.
+ * Class that contains all utility data members and methods.
  */
 public class Utils {
     public static ParticleCloud sparkCloud = null;
@@ -37,11 +38,12 @@ public class Utils {
                         return Utils.ruthlessDynamite.callFunction(Constants.digitalWrite, Py.list(pinNumber, pinStatus));
                     } catch (ParticleDevice.FunctionDoesNotExistException e) {
                         Toaster.s(activity, Constants.toastIncorrectFunction);
+                        return 0;
                     }
                 } else {
                     Toaster.s(activity, Constants.toastCoreOffline);
+                    return 0;
                 }
-                return null;
             }
 
             @Override
@@ -49,36 +51,9 @@ public class Utils {
                 // Update values on Firebase!
                 // Add a progressbar
                 if (value > 0) {
-                    if (pinStatus.equals("0")) {
-                        Constants.peripheralsReference
-                                .child(user)
-                                .child(peripheral)
-                                .setValue(false)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (!task.isSuccessful()) {
-                                            // TODO: 16/08/16 Try again.
-                                        }
-                                    }
-                                });
-                    } else {
-                        Constants.peripheralsReference
-                                .child(user)
-                                .child(peripheral)
-                                .setValue(true)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (!task.isSuccessful()) {
-                                            // TODO: 16/08/16 Try again.
-                                        }
-                                    }
-                                });
-                    }
+                    pushPeripheralValueToFirebase(pinStatus, user, peripheral);
                 } else {
-                    // TODO: 16/08/16 Throw error
-                    Toaster.s(activity, "Return value: " + value);
+                    Toaster.s(activity, "Error status: " + value);
                 }
             }
 
@@ -89,13 +64,39 @@ public class Utils {
         });
     }
 
+    public static void pushPeripheralValueToFirebase(final String pinStatus, final String user, final String peripheral) {
+        if (pinStatus.equals("0")) {
+            Constants.peripheralsReference
+                    .child(user)
+                    .child(peripheral)
+                    .setValue(false)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (!task.isSuccessful()) {
+                                pushPeripheralValueToFirebase(pinStatus, user, peripheral);
+                            }
+                        }
+                    });
+        } else {
+            Constants.peripheralsReference
+                    .child(user)
+                    .child(peripheral)
+                    .setValue(true)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (!task.isSuccessful()) {
+                                pushPeripheralValueToFirebase(pinStatus, user, peripheral);
+                            }
+                        }
+                    });
+        }
+    }
+
     // Turn off all peripherals
     public static void supermassiveEmp(ParticleDevice particleDevice, final Activity activity) {
         if (particleDevice.isConnected()) {
-            /** TODO: 16/08/16 Write a custom function on the Core to set a 0 to all digital and analog pins.
-             * It's inefficient to push lows for each pin.
-             */
-
             Async.executeAsync(particleDevice, new Async.ApiWork<ParticleDevice, Integer>() {
                 @Override
                 public Integer callApi(ParticleDevice particleDevice) throws ParticleCloudException, IOException {

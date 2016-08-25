@@ -3,6 +3,8 @@
     <color name="colorPrimary">#795548</color>
     <color name="colorPrimaryDark">#3E2723</color>
     <color name="colorAccent">#006064</color>
+    <color name="colorSplashPrimary">#4527A0</color>
+    <color name="colorSplashBackground">#673AB7</color>
 
     // UI colors
     <color name="colorUserOne">#c62828</color>
@@ -14,7 +16,6 @@
     <color name="colorLabelUserTwo">#1976D2</color>
     <color name="colorLabelUserThree">#388E3C</color>
     <color name="colorLabelUserFour">#FFA000</color>
-
 
     <color name="black_overlay">#66000000</color>
 

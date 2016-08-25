@@ -49,26 +49,26 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Peripheral references' valueEventListener
          */
-        Constants.peripheralsReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot peripheralSnapshot : dataSnapshot.getChildren()) {
-                    toggleButtonUserOneLight.setChecked(peripheralSnapshot.child(Constants.userOne).child(Constants.peripheralLight).getValue().equals(true));
-                    toggleButtonUserOneFan.setChecked(peripheralSnapshot.child(Constants.userOne).child(Constants.peripheralFan).getValue().equals(true));
-                    toggleButtonUserTwoLight.setChecked(peripheralSnapshot.child(Constants.userTwo).child(Constants.peripheralLight).getValue().equals(true));
-                    toggleButtonUserTwoFan.setChecked(peripheralSnapshot.child(Constants.userTwo).child(Constants.peripheralFan).getValue().equals(true));
-                    toggleButtonUserThreeLight.setChecked(peripheralSnapshot.child(Constants.userThree).child(Constants.peripheralLight).getValue().equals(true));
-                    toggleButtonUserThreeFan.setChecked(peripheralSnapshot.child(Constants.userThree).child(Constants.peripheralFan).getValue().equals(true));
-                    toggleButtonUserFourLight.setChecked(peripheralSnapshot.child(Constants.userFour).child(Constants.peripheralLight).getValue().equals(true));
-                    toggleButtonUserFourFan.setChecked(peripheralSnapshot.child(Constants.userFour).child(Constants.peripheralFan).getValue().equals(true));
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), Constants.toastCommandCancelled, Toast.LENGTH_SHORT).show();
-            }
-        });
+//        Constants.peripheralsReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot peripheralSnapshot : dataSnapshot.getChildren()) {
+//                    toggleButtonUserOneLight.setChecked(peripheralSnapshot.child(Constants.userOne).child(Constants.peripheralLight).getValue().equals(true));
+//                    toggleButtonUserOneFan.setChecked(peripheralSnapshot.child(Constants.userOne).child(Constants.peripheralFan).getValue().equals(true));
+//                    toggleButtonUserTwoLight.setChecked(peripheralSnapshot.child(Constants.userTwo).child(Constants.peripheralLight).getValue().equals(true));
+//                    toggleButtonUserTwoFan.setChecked(peripheralSnapshot.child(Constants.userTwo).child(Constants.peripheralFan).getValue().equals(true));
+//                    toggleButtonUserThreeLight.setChecked(peripheralSnapshot.child(Constants.userThree).child(Constants.peripheralLight).getValue().equals(true));
+//                    toggleButtonUserThreeFan.setChecked(peripheralSnapshot.child(Constants.userThree).child(Constants.peripheralFan).getValue().equals(true));
+//                    toggleButtonUserFourLight.setChecked(peripheralSnapshot.child(Constants.userFour).child(Constants.peripheralLight).getValue().equals(true));
+//                    toggleButtonUserFourFan.setChecked(peripheralSnapshot.child(Constants.userFour).child(Constants.peripheralFan).getValue().equals(true));
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Toast.makeText(getApplicationContext(), Constants.toastCommandCancelled, Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         /**
          * User One
