@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Lynk</string>
-    <string name="app_version">Alpha version 0.3.2</string>
+    <string name="app_version">Alpha version 0.4.1</string>
 
     <string name="title_activity_main">Home</string>
     <string name="title_activity_splash">Lynk</string>
