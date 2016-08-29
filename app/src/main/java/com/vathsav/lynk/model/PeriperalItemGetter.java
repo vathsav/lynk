@@ -4,9 +4,9 @@ package com.vathsav.lynk.model;
  * Created by vathsav on 16/08/16.
  */
 public class PeriperalItemGetter {
-    public String user;
-    public String light;
-    public String fan;
+    public final String user;
+    public final String light;
+    public final String fan;
 
     public PeriperalItemGetter(String user, String light, String fan) {
         this.user = user;
