@@ -126,7 +126,7 @@ int lynkAnalogWrite(String command) {
 /*******************************************************************************
  * Function Name  : supermassiveEmp
  * Description    : Sends a low to all pins on the board
- * Input          : 007
+ * Input          : pandasareawesome
  * Output         : None.
  * Return         : 1 on success and -1 on failure
  *******************************************************************************/
@@ -167,6 +167,7 @@ int lynkAnalogWrite(String command) {
 		analogWrite(16, 0);
 		pinMode(17, OUTPUT);
 		analogWrite(17, 0);
+		return 1;
 	} else {
 		return -1;
 	}
