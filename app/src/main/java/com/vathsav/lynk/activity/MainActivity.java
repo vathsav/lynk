@@ -49,23 +49,44 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Peripheral references' valueEventListener
          */
-        Constants.peripheralsReference.addValueEventListener(new ValueEventListener() {
+//        Constants.peripheralsReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                for (DataSnapshot peripheralSnapshot : dataSnapshot.getChildren()) {
+//                    Toast.makeText(getApplicationContext(), peripheralSnapshot., Toast.LENGTH_LONG).show();
+//                    if (peripheralSnapshot.child(Constants.userOne).getValue() != null) {
+//                        toggleButtonUserOneLight.setChecked(peripheralSnapshot.child(Constants.userOne).child(Constants.peripheralLight).getValue().equals(true));
+//                        toggleButtonUserOneFan.setChecked(peripheralSnapshot.child(Constants.userOne).child(Constants.peripheralFan).getValue().equals(true));
+//                    } else if (peripheralSnapshot.child(Constants.userTwo).getValue() != null) {
+//                        toggleButtonUserTwoLight.setChecked(peripheralSnapshot.child(Constants.userTwo).child(Constants.peripheralLight).getValue().equals(true));
+//                        toggleButtonUserTwoFan.setChecked(peripheralSnapshot.child(Constants.userTwo).child(Constants.peripheralFan).getValue().equals(true));
+//                    } else if (peripheralSnapshot.child(Constants.userThree).getValue() != null) {
+//                        toggleButtonUserThreeLight.setChecked(peripheralSnapshot.child(Constants.userThree).child(Constants.peripheralLight).getValue().equals(true));
+//                        toggleButtonUserThreeFan.setChecked(peripheralSnapshot.child(Constants.userThree).child(Constants.peripheralFan).getValue().equals(true));
+//                    } else if (peripheralSnapshot.child(Constants.userFour).child(Constants.peripheralFan).getValue() != null) {
+//                        toggleButtonUserFourLight.setChecked(peripheralSnapshot.child(Constants.userFour).child(Constants.peripheralLight).getValue().equals(true));
+//                        toggleButtonUserFourFan.setChecked(peripheralSnapshot.child(Constants.userFour).child(Constants.peripheralFan).getValue().equals(true));
+//                        Toast.makeText(getApplicationContext(),
+//                                peripheralSnapshot.child(Constants.userFour).child(Constants.peripheralFan).getValue().toString(),
+//                                Toast.LENGTH_LONG).show();
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Toast.makeText(getApplicationContext(), Constants.toastCommandCancelled, Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+        Constants.peripheralsReference
+                .orderByChild(Constants.userFour).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot peripheralSnapshot : dataSnapshot.getChildren()) {
-                    if (peripheralSnapshot.child(Constants.userOne).exists()) {
-                        toggleButtonUserOneLight.setChecked(peripheralSnapshot.child(Constants.userOne).child(Constants.peripheralLight).getValue().equals(true));
-                        toggleButtonUserOneFan.setChecked(peripheralSnapshot.child(Constants.userOne).child(Constants.peripheralFan).getValue().equals(true));
-                    } else if (peripheralSnapshot.child(Constants.userTwo).exists()) {
-                        toggleButtonUserTwoLight.setChecked(peripheralSnapshot.child(Constants.userTwo).child(Constants.peripheralLight).getValue().equals(true));
-                        toggleButtonUserTwoFan.setChecked(peripheralSnapshot.child(Constants.userTwo).child(Constants.peripheralFan).getValue().equals(true));
-                    } else if (peripheralSnapshot.child(Constants.userThree).exists()) {
-                        toggleButtonUserThreeLight.setChecked(peripheralSnapshot.child(Constants.userThree).child(Constants.peripheralLight).getValue().equals(true));
-                        toggleButtonUserThreeFan.setChecked(peripheralSnapshot.child(Constants.userThree).child(Constants.peripheralFan).getValue().equals(true));
-                    } else if (peripheralSnapshot.child(Constants.userFour).exists()) {
-                        toggleButtonUserFourLight.setChecked(peripheralSnapshot.child(Constants.userFour).child(Constants.peripheralLight).getValue().equals(true));
-                        toggleButtonUserFourFan.setChecked(peripheralSnapshot.child(Constants.userFour).child(Constants.peripheralFan).getValue().equals(true));
-                    }
+                    toggleButtonUserFourLight.setChecked(peripheralSnapshot.child(Constants.peripheralLight).getValue().equals(true));
+                    toggleButtonUserFourFan.setChecked(peripheralSnapshot.child(Constants.peripheralFan).getValue().equals(true));
                 }
             }
 
@@ -75,6 +96,55 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Constants.peripheralsReference
+                .orderByChild(Constants.userOne).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot peripheralSnapshot : dataSnapshot.getChildren()) {
+                    toggleButtonUserFourLight.setChecked(peripheralSnapshot.child(Constants.peripheralLight).getValue().equals(true));
+                    toggleButtonUserFourFan.setChecked(peripheralSnapshot.child(Constants.peripheralFan).getValue().equals(true));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), Constants.toastCommandCancelled, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Constants.peripheralsReference
+                .orderByChild(Constants.userTwo).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot peripheralSnapshot : dataSnapshot.getChildren()) {
+                    toggleButtonUserFourLight.setChecked(peripheralSnapshot.child(Constants.peripheralLight).getValue().equals(true));
+                    toggleButtonUserFourFan.setChecked(peripheralSnapshot.child(Constants.peripheralFan).getValue().equals(true));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), Constants.toastCommandCancelled, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Constants.peripheralsReference
+                .orderByChild(Constants.userThree).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot peripheralSnapshot : dataSnapshot.getChildren()) {
+                    toggleButtonUserFourLight.setChecked(peripheralSnapshot.child(Constants.peripheralLight).getValue().equals(true));
+                    toggleButtonUserFourFan.setChecked(peripheralSnapshot.child(Constants.peripheralFan).getValue().equals(true));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), Constants.toastCommandCancelled, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         /**
          * User One
          */
@@ -82,10 +152,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneLight, "1", Constants.userOne,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneLight, "0", Constants.userOne,
                             Constants.peripheralLight, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneLight, "0", Constants.userOne,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneLight, "1", Constants.userOne,
                             Constants.peripheralLight, MainActivity.this);
             }
         });
@@ -94,10 +164,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneFan, "1", Constants.userOne,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneFan, "0", Constants.userOne,
                             Constants.peripheralFan, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneFan, "0", Constants.userOne,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userOneFan, "1", Constants.userOne,
                             Constants.peripheralFan, MainActivity.this);
             }
         });
@@ -109,10 +179,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoLight, "1", Constants.userTwo,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoLight, "0", Constants.userTwo,
                             Constants.peripheralLight, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoLight, "0", Constants.userTwo,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoLight, "1", Constants.userTwo,
                             Constants.peripheralLight, MainActivity.this);
             }
         });
@@ -121,10 +191,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoFan, "1", Constants.userTwo,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoFan, "0", Constants.userTwo,
                             Constants.peripheralFan, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoFan, "0", Constants.userTwo,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userTwoFan, "1", Constants.userTwo,
                             Constants.peripheralFan, MainActivity.this);
             }
         });
@@ -136,10 +206,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeLight, "1", Constants.userThree,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeLight, "0", Constants.userThree,
                             Constants.peripheralLight, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeLight, "0", Constants.userThree,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeLight, "1", Constants.userThree,
                             Constants.peripheralLight, MainActivity.this);
             }
         });
@@ -148,10 +218,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeFan, "1", Constants.userThree,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeFan, "0", Constants.userThree,
                             Constants.peripheralFan, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeFan, "0", Constants.userThree,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userThreeFan, "1", Constants.userThree,
                             Constants.peripheralFan, MainActivity.this);
             }
         });
@@ -163,10 +233,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourLight, "1", Constants.userFour,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourLight, "0", Constants.userFour,
                             Constants.peripheralLight, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourLight, "0", Constants.userFour,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourLight, "1", Constants.userFour,
                             Constants.peripheralLight, MainActivity.this);
             }
         });
@@ -175,10 +245,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked)
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourFan, "1", Constants.userFour,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourFan, "0", Constants.userFour,
                             Constants.peripheralFan, MainActivity.this);
                 else
-                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourFan, "0", Constants.userFour,
+                    Utils.pushDigitalValue(Utils.ruthlessDynamite, Constants.userFourFan, "1", Constants.userFour,
                             Constants.peripheralFan, MainActivity.this);
             }
         });

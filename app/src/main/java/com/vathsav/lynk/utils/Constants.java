@@ -43,14 +43,25 @@ public class Constants {
     public static final String fireEmp = "skadoosh";
 
     // Dedicated GPIO configuration
+//    public static final String userOneLight = "D0";
+//    public static final String userOneFan = "A0";
+//    public static final String userTwoLight = "D2";
+//    public static final String userTwoFan = "A2";
+//    public static final String userThreeLight = "D4";
+//    public static final String userThreeFan = "A4";
+//    public static final String userFourLight = "D6";
+//    public static final String userFourFan = "A6";
+
     public static final String userOneLight = "D0";
-    public static final String userOneFan = "A0";
-    public static final String userTwoLight = "D2";
-    public static final String userTwoFan = "A2";
-    public static final String userThreeLight = "D4";
-    public static final String userThreeFan = "A4";
-    public static final String userFourLight = "D6";
-    public static final String userFourFan = "A6";
+    public static final String userOneFan = "D4";
+    public static final String userTwoLight = "D1";
+    public static final String userTwoFan = "D5";
+    public static final String userThreeLight = "D2";
+    public static final String userThreeFan = "D6";
+    public static final String userFourLight = "D3";
+    public static final String userFourFan = "D7";
+
+
 //    public static String commonOne = "A";
 //    public static String commonTwo = "A";
 
@@ -58,8 +69,9 @@ public class Constants {
     public static final String skadooshCode = "pandasareawesome";
 
     // Names of users
-    public static final String userOne = "Sentinel";
-    public static final String userTwo = "El Diablo";
-    public static final String userThree = "Deadshot";
-    public static final String userFour = "Crazy Ivan";
+    public static final String userThree = "Gohsst";
+    public static final String userTwo = "Darkside";
+    public static final String userOne = "Brofessor Bobye";
+    public static final String userFour = "Common";
+//    public static final String userFour = "Crazy Ivan";
 }

@@ -152,8 +152,8 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/toggle_button_user_four_fan"
                 android:layout_alignStart="@+id/toggle_button_user_four_fan"
-                android:textOff="Light Off"
-                android:textOn="Light On" />
+                android:textOff="Bath Off"
+                android:textOn="Bath On" />
 
             <ToggleButton
                 android:id="@+id/toggle_button_user_four_fan"
@@ -161,8 +161,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:textOff="Fan Off"
-                android:textOn="Fan On" />
+                android:textOff="Kutti Bulb Off"
+                android:textOn="Butti Bulb On" />
 
             <TextView
                 android:id="@+id/text_view_user_four"
