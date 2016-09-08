@@ -79,6 +79,7 @@ public class SplashActivity extends AppCompatActivity {
 
                 Intent openMainActivity = new Intent(Constants.intentHome);
                 startActivity(openMainActivity);
+                finish();
             }
 
             @Override
