@@ -5,7 +5,7 @@ A home automation client for my dorm using a Spark Core, the Particle Cloud SDK,
 
 **To do**
 * ~~Basic interaction between the Spark Core and Android client~~
-* Firebase integration to restore Core's state, or fetch the state on multiple clients
+* ~~Firebase integration to restore Core's state, or fetch the state on multiple clients~~
 * Events that get triggered based on device location
 * XMPP server scripts for pushing alerts to devices
 * Ability to control common applicances
