@@ -12,6 +12,9 @@ void setup() {
 	Particle.function("analogRead", lynkAnalogRead);
 	Particle.function("analogWrite", lynkAnalogWrite);
 	Particle.function("skadoosh", lynkBlow);
+
+	// Restore the digital states of the pins from the Core's EEPROM
+	uint8_t value = EEPROM.read(1);
 }
 
 void loop() {}
@@ -62,11 +65,13 @@ int lynkDigitalWrite(String command) {
 	if(command.startsWith("D")) {
 		pinMode(pinNumber, OUTPUT);
 		digitalWrite(pinNumber, value);
+		EEPROM.write(1, value);
 		return 1;
 	}
 	else if(command.startsWith("A")) {
 		pinMode(pinNumber + 10, OUTPUT);
 		digitalWrite(pinNumber + 10, value);
+		EEPROM.write(1, value);
 		return 1;
 	}
 	else return -3;
@@ -113,11 +118,13 @@ int lynkAnalogWrite(String command) {
 	if(command.startsWith("D")) {
 		pinMode(pinNumber, OUTPUT);
 		analogWrite(pinNumber, value.toInt());
+		EEPROM.write(2, value.toInt());
 		return 1;
 	}
 	else if(command.startsWith("A")) {
 		pinMode(pinNumber + 10, OUTPUT);
 		analogWrite(pinNumber + 10, value.toInt());
+		EEPROM.write(2, value.toInt());
 		return 1;
 	}
 	else return -2;
