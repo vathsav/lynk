@@ -77,7 +77,7 @@ public class SplashActivity extends AppCompatActivity {
                     return;
                 }
 
-                Intent openMainActivity = new Intent(Constants.intentHome);
+                Intent openMainActivity = Constants.intentHome;
                 startActivity(openMainActivity);
                 finish();
             }

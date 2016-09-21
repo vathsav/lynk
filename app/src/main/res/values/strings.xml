@@ -5,7 +5,10 @@
     <string name="title_activity_main">Home</string>
     <string name="title_activity_splash">Lynk</string>
 
-    // Strings for Splash Screen
+    <!-- Menu items -->
+    <string name="action_settings">Settings</string>
+
+    <!-- Strings for Splash Screen -->
     <string name="splash_text_view_initializing">Initializing ruthless_dynamite..</string>
     <string name="title_activity_preferences">Settings</string>
 

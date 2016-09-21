@@ -1,5 +1,7 @@
 package com.vathsav.lynk.utils;
 
+import android.content.Intent;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -9,7 +11,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Constants {
 
     // Intents
-    public static final String intentHome = "com.vathsav.lynk.MAIN";
+    public static final Intent intentHome = new Intent("com.vathsav.lynk.MAIN");
+    public static final Intent intentSettings = new Intent("com.vathsav.lynk.SETTINGS");
 
     // Firebase references
     private static final FirebaseDatabase database = FirebaseDatabase.getInstance();

@@ -32,7 +32,13 @@
         </activity>
         <activity
             android:name=".activity.PreferencesActivity"
-            android:label="@string/title_activity_preferences"></activity>
+            android:label="@string/title_activity_preferences">
+            <intent-filter>
+                <action android:name="com.vathsav.lynk.SETTINGS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
