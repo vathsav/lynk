@@ -5,16 +5,26 @@ int lynkAnalogRead(String pin);
 int lynkAnalogWrite(String command);
 int lynkBlow(String code);
 
+SYSTEM_MODE(SEMI_AUTOMATIC);
+
 void setup() {
+	// Restore states of all digital pins
+	int pinNumber = 0;
+	while (pinNumber <= 7) {
+		pinMode(pinNumber, OUTPUT);
+		digitalWrite(pinNumber, EEPROM.read(pinNumber + 10));
+		pinNumber++;
+	}
+
+	// Connect to the cloud
+    Particle.connect();
+
 	//Register all the Lynk functions
 	Particle.function("digitalRead", lynkDigitalRead);
 	Particle.function("digitalWrite", lynkDigitalWrite);
 	Particle.function("analogRead", lynkAnalogRead);
 	Particle.function("analogWrite", lynkAnalogWrite);
 	Particle.function("skadoosh", lynkBlow);
-
-	// Restore the digital states of the pins from the Core's EEPROM
-	uint8_t value = EEPROM.read(1);
 }
 
 void loop() {}
@@ -65,13 +75,17 @@ int lynkDigitalWrite(String command) {
 	if(command.startsWith("D")) {
 		pinMode(pinNumber, OUTPUT);
 		digitalWrite(pinNumber, value);
-		EEPROM.write(1, value);
-		return 1;
+
+		// Using the pin number as address!
+		EEPROM.write(pinNumber + 10, value);
+        return 1;
 	}
 	else if(command.startsWith("A")) {
 		pinMode(pinNumber + 10, OUTPUT);
 		digitalWrite(pinNumber + 10, value);
-		EEPROM.write(1, value);
+
+		// Using the pin number as address!
+		//EEPROM.write(pinNumber, value);
 		return 1;
 	}
 	else return -3;
@@ -118,13 +132,11 @@ int lynkAnalogWrite(String command) {
 	if(command.startsWith("D")) {
 		pinMode(pinNumber, OUTPUT);
 		analogWrite(pinNumber, value.toInt());
-		EEPROM.write(2, value.toInt());
 		return 1;
 	}
 	else if(command.startsWith("A")) {
 		pinMode(pinNumber + 10, OUTPUT);
 		analogWrite(pinNumber + 10, value.toInt());
-		EEPROM.write(2, value.toInt());
 		return 1;
 	}
 	else return -2;
@@ -133,29 +145,30 @@ int lynkAnalogWrite(String command) {
 /*******************************************************************************
  * Function Name  : supermassiveEmp
  * Description    : Sends a low to all pins on the board
- * Input          : pandasareawesome
+ * Input          : 007
  * Output         : None.
  * Return         : 1 on success and -1 on failure
  *******************************************************************************/
  int lynkBlow(String command) {
 	if (command.startsWith("pandasareawesome")) {
-		// Send a LOW to all digital pins
+		// Send a HIGH (Relay is inverted for now :P) to all digital pins
+		// TODO: Flip this.
 		pinMode(0, OUTPUT);
-		digitalWrite(0, LOW);
+		digitalWrite(0, HIGH);
 		pinMode(1, OUTPUT);
-		digitalWrite(1, LOW);
+		digitalWrite(1, HIGH);
 		pinMode(2, OUTPUT);
-		digitalWrite(2, LOW);
+		digitalWrite(2, HIGH);
 		pinMode(3, OUTPUT);
-		digitalWrite(3, LOW);
+		digitalWrite(3, HIGH);
 		pinMode(4, OUTPUT);
-		digitalWrite(4, LOW);
+		digitalWrite(4, HIGH);
 		pinMode(5, OUTPUT);
-		digitalWrite(5, LOW);
+		digitalWrite(5, HIGH);
 		pinMode(6, OUTPUT);
-		digitalWrite(6, LOW);
+		digitalWrite(6, HIGH);
 		pinMode(7, OUTPUT);
-		digitalWrite(7, LOW);
+		digitalWrite(7, HIGH);
 
 		// Send a LOW to all analog pins
 		pinMode(10, OUTPUT);
@@ -174,7 +187,6 @@ int lynkAnalogWrite(String command) {
 		analogWrite(16, 0);
 		pinMode(17, OUTPUT);
 		analogWrite(17, 0);
-		return 1;
 	} else {
 		return -1;
 	}
