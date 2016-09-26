@@ -11,8 +11,7 @@ void setup() {
 	// Restore states of all digital pins
 	int pinNumber = 0;
 	while (pinNumber <= 7) {
-		pinMode(pinNumber, OUTPUT);
-		digitalWrite(pinNumber, EEPROM.read(pinNumber + 10));
+		digitalWriteFast(pinNumber, EEPROM.read(pinNumber));
 		pinNumber++;
 	}
 
@@ -73,19 +72,18 @@ int lynkDigitalWrite(String command) {
 	else return -2;
 
 	if(command.startsWith("D")) {
-		pinMode(pinNumber, OUTPUT);
-		digitalWrite(pinNumber, value);
+		digitalWriteFast(pinNumber, value);
 
 		// Using the pin number as address!
-		EEPROM.write(pinNumber + 10, value);
+		EEPROM.write(pinNumber, value);
         return 1;
 	}
 	else if(command.startsWith("A")) {
-		pinMode(pinNumber + 10, OUTPUT);
-		digitalWrite(pinNumber + 10, value);
+		pinNumber += 10;
+		digitalWriteFast(pinNumber, value);
 
 		// Using the pin number as address!
-		//EEPROM.write(pinNumber, value);
+		EEPROM.write(pinNumber, value);
 		return 1;
 	}
 	else return -3;
@@ -152,41 +150,21 @@ int lynkAnalogWrite(String command) {
  int lynkBlow(String command) {
 	if (command.startsWith("pandasareawesome")) {
 		// Send a HIGH (Relay is inverted for now :P) to all digital pins
+		int pinNumber = 0;
+
 		// TODO: Flip this.
-		pinMode(0, OUTPUT);
-		digitalWrite(0, HIGH);
-		pinMode(1, OUTPUT);
-		digitalWrite(1, HIGH);
-		pinMode(2, OUTPUT);
-		digitalWrite(2, HIGH);
-		pinMode(3, OUTPUT);
-		digitalWrite(3, HIGH);
-		pinMode(4, OUTPUT);
-		digitalWrite(4, HIGH);
-		pinMode(5, OUTPUT);
-		digitalWrite(5, HIGH);
-		pinMode(6, OUTPUT);
-		digitalWrite(6, HIGH);
-		pinMode(7, OUTPUT);
-		digitalWrite(7, HIGH);
+		// Digital pins
+		while (pinNumber <= 7) {
+			digitalWriteFast(pinNumber, 1);
+			pinNumber++;
+		}
 
 		// Send a LOW to all analog pins
-		pinMode(10, OUTPUT);
-		analogWrite(10, 0);
-		pinMode(11, OUTPUT);
-		analogWrite(11, 0);
-		pinMode(12, OUTPUT);
-		digitalWrite(12, LOW);
-		pinMode(13, OUTPUT);
-		analogWrite(13, 0);
-		pinMode(14, OUTPUT);
-		analogWrite(14, 0);
-		pinMode(15, OUTPUT);
-		analogWrite(15, 0);
-		pinMode(16, OUTPUT);
-		analogWrite(16, 0);
-		pinMode(17, OUTPUT);
-		analogWrite(17, 0);
+		pinNumber = 10
+		while (pinNumber <= 17) {
+			digitalWriteFast(pinNumber, 0);
+			pinNumber++;
+		}
 	} else {
 		return -1;
 	}
