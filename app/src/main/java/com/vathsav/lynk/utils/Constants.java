@@ -10,6 +10,9 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 public class Constants {
 
+    // Log Tags
+    public static final String tagLocationIntentServiceError = "LOCATION_SERVICE_ERROR";
+
     // Intents
     public static final Intent intentHome = new Intent("com.vathsav.lynk.MAIN");
     public static final Intent intentSettings = new Intent("com.vathsav.lynk.SETTINGS");
@@ -24,6 +27,10 @@ public class Constants {
 
     // Firebase nodes
     public static final String lynkGlobalsServerTimestamp = "server_timestamp";
+
+    // Location service
+    public static final String broadcastAction = "BROADCAST_ACTION";
+    public static final int broadcastInterval = 1000 * 30;
 
     // Toasts
     public static final String toastCommandCancelled = "Command cancelled";

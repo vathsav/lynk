@@ -1,9 +1,12 @@
 package com.vathsav.lynk.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ServerValue;
@@ -20,7 +27,10 @@ import com.vathsav.lynk.R;
 import com.vathsav.lynk.utils.Constants;
 import com.vathsav.lynk.utils.Utils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener {
+
+    private GoogleApiClient googleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // TODO: 03/10/16 Use the device's location
+
 
         final ToggleButton toggleButtonUserOneLight = (ToggleButton) findViewById(R.id.toggle_button_user_one_light);
         final ToggleButton toggleButtonUserOneFan = (ToggleButton) findViewById(R.id.toggle_button_user_one_fan);
@@ -47,6 +60,23 @@ public class MainActivity extends AppCompatActivity {
         textViewUserTwo.setText(Constants.userTwo);
         textViewUserThree.setText(Constants.userThree);
         textViewUserFour.setText(Constants.userFour);
+
+        if (!isGooglePlayServicesAvailable()) {
+            finish();
+            return;
+        }
+
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
+
+        googleApiClient.connect();
+
+
+
+
 
         /**
          * Peripheral references' valueEventListeners
@@ -268,5 +298,37 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(Constants.intentSettings);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Checks if Google Play services is available.
+     * @return true if it is.
+     */
+    private boolean isGooglePlayServicesAvailable() {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if (ConnectionResult.SUCCESS == resultCode) {
+//            if (Log.isLoggable(TAG, Log.DEBUG)) {
+//                Log.d(TAG, "Google Play services is available.");
+//            }
+            return true;
+        } else {
+//            Log.e(TAG, "Google Play services is unavailable.");
+            return false;
+        }
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 }
