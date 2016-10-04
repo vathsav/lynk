@@ -13,6 +13,12 @@ public class Constants {
     // Log Tags
     public static final String tagLocationIntentServiceError = "LOCATION_SERVICE_ERROR";
 
+    // Geofence properties
+    public static final String geofenceRequestId = "0001";
+    public static final double geofenceLatitude = 10.72862;
+    public static final double geofenceLongitude = 79.02229;
+    public static final float geofenceRadiusInMeters = 10;
+
     // Intents
     public static final Intent intentHome = new Intent("com.vathsav.lynk.MAIN");
     public static final Intent intentSettings = new Intent("com.vathsav.lynk.SETTINGS");
