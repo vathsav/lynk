@@ -4,6 +4,7 @@ int lynkDigitalWrite(String command);
 int lynkAnalogRead(String pin);
 int lynkAnalogWrite(String command);
 int lynkBlow(String code);
+int lynkDigitalToggle(String pin);
 
 SYSTEM_MODE(SEMI_AUTOMATIC);
 
@@ -24,6 +25,7 @@ void setup() {
 	Particle.function("analogRead", lynkAnalogRead);
 	Particle.function("analogWrite", lynkAnalogWrite);
 	Particle.function("skadoosh", lynkBlow);
+	Particle.function("digitalToggle", lynkDigitalToggle)
 }
 
 void loop() {}
@@ -105,7 +107,7 @@ int lynkAnalogRead(String pin) {
 
 	if(pin.startsWith("D")) {
 		return -3;
-	}   
+	}
 	else if (pin.startsWith("A")) {
 		return analogRead(pinNumber + 10);
 	}
@@ -141,7 +143,7 @@ int lynkAnalogWrite(String command) {
 }
 
 /*******************************************************************************
- * Function Name  : supermassiveEmp
+ * Function Name  : skadoosh
  * Description    : Sends a low to all pins on the board
  * Input          : 007
  * Output         : None.
@@ -168,4 +170,30 @@ int lynkAnalogWrite(String command) {
 	} else {
 		return -1;
 	}
+	/*******************************************************************************
+	 * Function Name  : skadoosh
+	 * Description    : Sends a low to all pins on the board
+	 * Input          : 007
+	 * Output         : None.
+	 * Return         : 1 on success and -1 on failure
+	 *******************************************************************************/
+ int lynkDigitalToggle(String command) {
+  bool value = 0;
+ 	//convert ascii to integer
+ 	int pinNumber = command.charAt(0) - '0';
+ 	//Sanity check to see if the pin numbers are within limits
+ 	if (pinNumber < 0 || pinNumber > 7) return -1;
+
+	if (digitalRead(pinNumber) {
+		return 1;
+	} else {
+		return 0;
+	}
+
+ 	digitalWriteFast(pinNumber, value);
+ 		// Using the pin number as address!
+ 		EEPROM.write(pinNumber, value);
+         return 1;
+ 	}
+ 	else return -3;
  }

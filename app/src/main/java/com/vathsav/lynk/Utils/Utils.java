@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
+import com.google.android.gms.location.Geofence;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +28,15 @@ public class Utils {
     public static ParticleCloud sparkCloud = null;
     public static ParticleDevice ruthlessDynamite = null;
     public static String deviceId = null;
+
+    public static Geofence setupGeofence() {
+        return new Geofence.Builder()
+                .setRequestId(Constants.geofenceRequestId)
+                .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER | Geofence.GEOFENCE_TRANSITION_EXIT)
+                .setCircularRegion(Constants.geofenceLatitude, Constants.geofenceLongitude, Constants.geofenceRadiusInMeters)
+                .setExpirationDuration(Geofence.NEVER_EXPIRE)
+                .build();
+    }
 
     public static void pushDigitalValue(ParticleDevice particleDevice, final String pinNumber,
                                         final String pinStatus, final String user, final String peripheral, final Activity activity) {
