@@ -25,7 +25,7 @@ void setup() {
 	Particle.function("analogRead", lynkAnalogRead);
 	Particle.function("analogWrite", lynkAnalogWrite);
 	Particle.function("skadoosh", lynkBlow);
-	Particle.function("digitalToggle", lynkDigitalToggle)
+	Particle.function("digitalToggle", lynkDigitalToggle);
 }
 
 void loop() {}
